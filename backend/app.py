@@ -18,6 +18,7 @@ def get_students():
     return: Array of student objects
     """
     # TODO: replace with your implementation. This is a mock response
+<<<<<<< HEAD
     # return jsonify([
     #     {'course': 'COMP1531', 'id': 1, 'mark': 85, 'name': 'Alice Zhang'},
     #     {'course': 'COMP1531', 'id': 2, 'mark': 72, 'name': 'Bob Smith'}
@@ -25,6 +26,12 @@ def get_students():
 
     students = db.get_all_students()
     return jsonify(students), 200
+=======
+    return jsonify([
+        {'course': 'COMP1531', 'id': 1, 'mark': 85, 'name': 'Alice Zhang'},
+        {'course': 'COMP1531', 'id': 2, 'mark': 72, 'name': 'Bob Smith'}
+    ]), 200
+>>>>>>> origin/eric/stats-feature
 
 
 @app.route("/students", methods=["POST"])
@@ -38,6 +45,7 @@ def create_student():
     """
 
     # Getting the request body - replace with your implementation
+<<<<<<< HEAD
     # student_data = request.json
 
     student_data = request.json
@@ -53,6 +61,11 @@ def create_student():
 
     return jsonify(new_student), 200
 
+=======
+    student_data = request.json
+
+    pass
+>>>>>>> origin/eric/stats-feature
 
 
 @app.route("/students/<int:student_id>", methods=["PUT"])
@@ -64,6 +77,7 @@ def update_student(student_id):
     param mark: The mark the student received (from request body)
     return: The updated student if successful
     """
+<<<<<<< HEAD
     student_data = request.json
     name = student_data.get("name")
     course = student_data.get("course")
@@ -76,6 +90,10 @@ def update_student(student_id):
         return jsonify({"error": "Student does not exist!"}), 404
 
     return jsonify(updated_student), 200
+=======
+    pass  # replace with your implementation
+
+>>>>>>> origin/eric/stats-feature
 
 @app.route("/students/<int:student_id>", methods=["DELETE"])
 def delete_student(student_id):
@@ -83,6 +101,7 @@ def delete_student(student_id):
     Route to delete student by id
     return: The deleted student
     """
+<<<<<<< HEAD
 
     deleted_student = db.delete_student(student_id)
 
@@ -91,6 +110,9 @@ def delete_student(student_id):
         return jsonify({"error": "Student not found!"}), 404
 
     return jsonify(deleted_student), 200
+=======
+    pass  # replace with your implementation
+>>>>>>> origin/eric/stats-feature
 
 
 @app.route("/stats")
@@ -99,6 +121,7 @@ def get_stats():
     Route to show the stats of all student marks 
     return: An object with the stats (count, average, min, max)
     """
+<<<<<<< HEAD
 
     students = db.get_all_students()
     
@@ -118,6 +141,9 @@ def get_stats():
         "min": min(marks),
         "max": max(marks)
     }), 200
+=======
+    pass  # replace with your implementation
+>>>>>>> origin/eric/stats-feature
 
 
 @app.route("/")
