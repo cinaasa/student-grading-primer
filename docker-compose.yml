@@ -12,7 +12,6 @@ services:
 
   backend:
     # TODO: you will need to add to this
-<<<<<<< HEAD
     build: ./backend
     depends_on:
       - db
@@ -29,11 +28,6 @@ services:
     build: ./frontend
     ports:
       - "8080:80"
-=======
-
-  frontend:
-    # TODO: you will need to add to this
->>>>>>> origin/eric/stats-feature
 
   automark:
     build: ./automark
