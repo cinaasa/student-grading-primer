@@ -17,11 +17,6 @@ def get_students():
     Route to fetch all students from the database
     return: Array of student objects
     """
-    # TODO: replace with your implementation. This is a mock response
-    # return jsonify([
-    #     {'course': 'COMP1531', 'id': 1, 'mark': 85, 'name': 'Alice Zhang'},
-    #     {'course': 'COMP1531', 'id': 2, 'mark': 72, 'name': 'Bob Smith'}
-    # ]), 200
 
     students = db.get_all_students()
     return jsonify(students), 200
@@ -38,7 +33,6 @@ def create_student():
     """
 
     # Getting the request body - replace with your implementation
-    # student_data = request.json
 
     student_data = request.json
     name = student_data.get("name")
@@ -49,6 +43,7 @@ def create_student():
     if not name or not course:
         return jsonify({"error": "Name and Course are mandatory"}), 404
     
+    ## E
     new_student = db.insert_student(name, course, mark)
 
     return jsonify(new_student), 200
@@ -77,6 +72,7 @@ def update_student(student_id):
 
     return jsonify(updated_student), 200
 
+
 @app.route("/students/<int:student_id>", methods=["DELETE"])
 def delete_student(student_id):
     """
@@ -101,10 +97,6 @@ def get_stats():
     """
 
     students = db.get_all_students()
-    
-    # EDGE CASE: Database is empty then return 0
-    if not students:
-        return jsonify({"count": 0, "average": 0, "min": 0, "max": 0}), 200
 
     # Get Mark List
     marks = []
@@ -112,12 +104,17 @@ def get_stats():
         if s["mark"] is not None:
             marks.append(s["mark"])
 
+    # EDGE CASE: Database is empty then return 0
+    if not marks:
+        return jsonify({"count": 0, "average": 0, "min": 0, "max": 0}), 200
+
     return jsonify({
-        "count": len(students), 
+        "count": len(marks), 
         "average": sum(marks) / len(marks),
         "min": min(marks),
         "max": max(marks)
     }), 200
+
 
 
 @app.route("/")
